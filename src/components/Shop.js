@@ -10,9 +10,7 @@ const Shop = () => {
     const [items, setItems] = useState([])
 
     const fetchItems = async () => {
-        const data = await fetch(
-          "https://jsonplaceholder.typicode.com/users"
-        );
+        const data = await fetch("https://jsonplaceholder.typicode.com/posts");
         const items = await data.json();
         setItems(items);
         // console.log(items)
@@ -22,7 +20,8 @@ const Shop = () => {
       <div>
         {items.map((item) => (
           <h1 key={item.id}>
-            <Link to={`/shop/${item.id}`}>{item.name}</Link>
+            {item.title}
+            <Link to={`/shop/${item.id}`}><button>Details</button></Link>
           </h1>
         ))}
       </div>
@@ -30,3 +29,4 @@ const Shop = () => {
 };
 
 export default Shop;
+
